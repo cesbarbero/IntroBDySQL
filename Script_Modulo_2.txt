@@ -1,0 +1,162 @@
+
+
+--Seleccionar registros de una tabla: Cláusulas SELECT
+
+La sentencia SELECT permite realizar operaciones de selección, ordenación, agrupación y filtrado de registros.
+Esta instrucción o sentencia utiliza diversas cláusulas:
+
+	FROM --> WHERE --> GROUP BY --> HAVING --> ORDER BY
+
+--FROM:
+Especifica la tabla de la que se quieren obtener los registros.
+
+--WHERE:
+Especifica los criterios o condiciones quedeben cumplir los registros a buscar dentro de 
+la tabla. 
+
+--GROUP BY:
+Permite agrupar los registros seleccionados en función de uno o más campos. 
+
+--HAVING:
+Especifica las condiciones que deben cumplir los grupos generados. 
+
+--ORDER BY:
+Ordena los registros seleccionados en función de un campo
+
+
+----- Mostrar todo el contenido de una tabla
+SELECT * FROM Articulos;
+
+----- Mostrar algunos campos de una tabla
+SELECT Nombre FROM Articulos;
+SELECT Nombre, Precio FROM Articulos;
+
+----- Generar columnas en una consulta
+SELECT *, Precio * 1.25 as ‘Precio con Aumento’ FROM Articulos;
+SELECT *, ‘China’ as Origen FROM Articulos;
+
+
+----- Ordenamiento de datos: cláusula ORDER BY
+/*
+La cláusula ORDER BY tiene como finalidad ordenar los resultados de las consultas por
+otras columnas. Cuando se genera un SELECT en base a una tabla, el resultado siempre se
+muestra ordenado en base al campo índice (PRIMARY KEY) por defecto.
+
+Tenga en cuenta que:
+	● El orden puede ser ascendente (por defecto) o descendente.
+	● Se puede ordenar por una columna o un conjunto de ellas.
+*/
+
+SELECT nombre, apellido FROM clientes ORDER BY apellido; -- ASC
+
+SELECT nombre, apellido FROM clientes ORDER BY apellido, nombre DESC;
+
+
+------ Limitar la cantidad de registros
+--LIMIT:
+/*
+Para poder limitar el número de filas (registros/resultados) devueltas en las consulta
+generada a través de la sentencia SELECT, se debe utilizar la cláusula LIMIT.
+A su vez, esta cláusula permite establecer el número máximo de registros a eliminar en el
+caso de utilizar la sentencia DELETE.
+
+LIMIT 2;
+En el ejemplo siguiente, se limita a 2 (dos) el número total de registros a mostrar en el
+resultado de la consulta:
+*/
+
+SELECT nombre, apellido
+FROM clientes
+
+
+------ OFFSET
+
+/*Opera en combinación con la cláusula LIMIT y permite posicionarse en el registro indicado;
+LIMIT seleccionará la cantidad de registros establecidos en la sentencia.
+En el ejemplo de la derecha, se limita a 2 (dos) el número total de registros a mostrar en el
+resultado de la consulta, a partir del 5º (quinto) registro (es decir, salteando los 4 primeros):
+*/
+SELECT nombre, apellido
+FROM clientes
+LIMIT 2 OFFSET 4;
+
+
+
+------------------------------- Cláusula WHERE
+/*La cláusula WHERE permite especificar las condiciones o criterios que deben cumplir los registros a buscar
+dentro de una tabla.*/
+
+En el siguiente ejemplo, se selecciona de la tabla Articulos la columna Nombre y muestra todos aquellos 
+registros cuyo valor en la columna codigo sea igual a 1:
+*/
+SELECT Nombre FROM Articulos WHERE codigo = 1;
+
+/*
+Y en el siguiente ejemplo, se selecciona de la tabla Articulos las columnas Nombre y Precio 
+y muestra todos aquellos registros cuyo precio sea superior a 150:
+*/
+SELECT Nombre, Precio FROM Articulos WHERE Precio > 150;
+
+/*En el siguiente ejemplo, se selecciona de la tabla Articulos todos aquellos registros cuyo 
+precio tenga un valor mayor o igual a 500, o su stock sea mayor o igual a 100:
+*/
+SELECT * FROM Articulos WHERE precio >= 500 OR stock >= 100;
+
+/*Y en el siguiente ejemplo, se selecciona de la tabla Articulos todos aquellos registros cuyo precio tenga un
+valor menor a 20 y su stock sea mayor o igual a 100:*/
+SELECT * FROM Articulos WHERE Precio < 20 AND stock >= 100;
+
+-------------- Operadores BETWEEN / NOT BETWEEN
+/*Entre los operadores de MySQL, existe uno denominado BETWEEN (entre), el cual se utiliza para comprobar 
+si una expresión está comprendida en un determinado rango de valores. 
+La sintaxis es:
+● BETWEEN mínimo AND máximo*/
+SELECT * FROM Articulos WHERE precio BETWEEN 100 AND 200;
+
+--● NOT BETWEEN mínimo AND máximo
+SELECT * FROM Articulos WHERE precio NOT BETWEEN 100 AND 200;
+
+------------- Operadores IN / NOT IN
+/*Los operadores IN y NOT IN sirven para averiguar si el valor de una 
+expresión determinada se encuentra dentro de un conjunto indicado.*/
+
+--Ejemplo 1:
+SELECT * FROM Articulos WHERE codigo IN (1,2,3);
+
+--Ejemplo 2:
+SELECT * FROM Articulos WHERE nombre IN ('Pala', 'Maza');
+
+--Ejemplo 3:
+SELECT * FROM Articulos WHERE nombre NOT IN ('Pala', 'Maza');
+
+
+------------- Operadores LIKE / NOT LIKE
+/*El operador LIKE se usa para hacer comparaciones entre cadenas y patrones.
+
+	● El resultado es verdadero (1) si la cadena se ajusta al patrón y falso (0) en caso contrario.
+	● Tanto si la cadena como el patrón son NULL, el resultado es NULL.
+
+Para definir estos patrones, se hace uso de comodines, como vemos en el cuadro de la
+derecha.
+Y en el ejemplo, se muestra de la tabla Articulos todos aquellos registros que en el campo
+nombre, figure la palabra Pala:
+*/
+SELECT * FROM Articulos WHERE nombre LIKE '%Pala%';
+
+-- Secuencias de escape: '\'
+SELECT * FROM clientes WHERE mail LIKE '%\_%';
+
+
+------------- Operadores IS NULL / IS NOT NULL
+Los operadores IS NULL e IS NOT NULL sirven para verificar si una expresión determinada 
+es o no nula.
+En el siguiente ejemplo, se mostrará todos aquellos registros de la tabla clientes 
+que no tengan cargado ningún valor en el campo comentarios:*/
+SELECT * FROM clientes WHERE comentarios IS NULL;
+
+/*Y en el siguiente ejemplo, se mostrará todos aquellos registros de la tabla clientes que 
+tengan algún valor cargado en el campo comentarios:*/
+SELECT * FROM clientes WHERE comentarios IS NOT NULL;
+
+
+

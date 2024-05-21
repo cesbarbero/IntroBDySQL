@@ -1,0 +1,70 @@
+Resolución de la etapa 2.4
+
+1. De la tabla NACIMIENTOS, obtén una lista de todos aquellos bebés nacidos de madres
+extranjeras. Muestra todos los campos de la tabla en el resultado de la consulta.
+SELECT * FROM NACIMIENTOS WHERE NACIONALIDAD = 'EXTRANJERA';
+
+2. De la tabla NACIMIENTOS, obtén una lista de todos aquellos bebés nacidos de madres menores de edad.
+Muestra todos los campos de la tabla en el resultado de la consulta y ordena el resultado de menor a mayor
+por la edad de las madres.
+SELECT * FROM NACIMIENTOS WHERE EDAD_MADRE < 18
+ORDER BY EDAD_MADRE;
+
+3. De la tabla NACIMIENTOS, obtén una lista de todos aquellos bebés nacidos de madres que tengan la
+misma edad que el padre. Muestra todos los campos de la tabla en el resultado de la consulta.
+SELECT * FROM NACIMIENTOS WHERE EDAD_MADRE = EDAD_PADRE;
+
+4. De la tabla NACIMIENTOS, obtén una lista de todos aquellos bebés nacidos de madres que, con respecto
+al padre, tengan 40 años o menos que el padre.
+SELECT * FROM NACIMIENTOS WHERE EDAD_PADRE-EDAD_MADRE > 40
+
+5. De la tabla CLIENTES_NEPTUNO, obtén una lista de todos aquellos clientes que residen en Argentina.
+Muestra todos los campos de la tabla en el resultado de la consulta.
+SELECT * FROM CLIENTES_NEPTUNO WHERE PAIS = 'ARGENTINA';
+
+6. De la tabla CLIENTES_NEPTUNO, obtén una lista de todos los clientes, con excepción de los que residen en
+Argentina. Muestra todos los campos de la tabla en el resultado de la consulta y ordena alfabéticamente
+dicho resultado por los nombres de los países.
+SELECT * FROM CLIENTES_NEPTUNO WHERE PAIS <> 'ARGENTINA'
+ORDER BY PAIS;
+
+7. De la tabla NACIMIENTOS, obtén una lista de todos aquellos bebés que nacieron con 
+menos de 20 semanas de gestación. Muestra todos los campos de la tabla en el resultado 
+de la consulta y ordena dicho resultado de mayor a menor, por los valores de la
+columna SEMANAS.
+SELECT * FROM NACIMIENTOS WHERE SEMANAS < 20
+ORDER BY SEMANAS DESC;
+
+8. De la tabla NACIMIENTOS, obtén una lista de todos los bebés de sexo femenino, nacidos de madres
+extranjeras solteras, de más de 40 años. Muestra todos los campos de la tabla en el resultado de la
+consulta.
+SELECT * FROM NACIMIENTOS WHERE SEXO = 'FEMENINO' AND
+NACIONALIDAD = 'EXTRANJERA' AND ESTADO_CIVIL_MADRE = 'SOLTERA'
+AND EDAD_MADRE > 40;
+
+9. De la tabla CLIENTES_NEPTUNO, obtén una lista de todos aquellos clientes que residan en países
+sudamericanos.
+(Los países sudamericanos que figuran en esta tabla son Argentina, Brasil y Venezuela).
+Muestra todos los campos de la tabla en el resultado de la consulta y ordena de manera alfabética los
+registros, por los nombres de los países y las ciudades.
+SELECT * FROM CLIENTES_NEPTUNO WHERE PAIS = 'ARGENTINA' OR PAIS =
+'VENEZUELA' OR PAIS = 'BRASIL' ORDER BY PAIS, CIUDAD;
+
+10. De la tabla NACIMIENTOS, obtén una lista de todos aquellos bebés que hayan nacido con una cantidad de
+semanas de gestación de entre 20 y 25 semanas, inclusive. Muestra todos los campos de la tabla en el
+resultado de la consulta y ordena el resultado según las semanas de gestación de los recién nacidos, de menor
+a mayor.
+SELECT * FROM NACIMIENTOS WHERE SEMANAS BETWEEN 20 AND 25
+ORDER BY SEMANAS;
+
+11. De la tabla NACIMIENTOS, utiliza el operador IN y obtén una lista de todos aquellos bebés que nacieron
+en las comunas 1101, 3201, 5605, 8108, 9204, 13120 y 15202. Muestra todos los campos de la tabla en el
+resultado de la consulta y ordena de menor a mayor los registros, por los números de comuna.
+SELECT * FROM NACIMIENTOS WHERE COMUNA
+IN (1101, 3201, 5605, 8108, 9204, 13120, 15202)
+ORDER BY COMUNA;
+
+12. De la tabla CLIENTES_NEPTUNO, obtén una lista de todos aquellos clientes cuyo ID comience con
+la letra C. Muestra todos los campos de la tabla, en el resultado de la consulta.
+SELECT * FROM CLIENTES_NEPTUNO WHERE IDCLIENTE LIKE 'C%';
+

@@ -1,0 +1,38 @@
+Resolución de la etapa 2.3
+
+1. Muestra todo el contenido de la tabla CLIENTES_NEPTUNO importada en el
+laboratorio anterior.
+SELECT * FROM CLIENTES_NEPTUNO;
+
+2. Muestra todos los registros de la tabla CLIENTES_NEPTUNO. En el resultado de la
+consulta sólo se deben observar las columnas
+NOMBRECOMPANIA, CIUDAD y PAIS.
+SELECT NOMBRECOMPANIA, CIUDAD, PAIS FROM CLIENTES_NEPTUNO;
+
+3. Muestra todos los registros de la tabla CLIENTES_NEPTUNO. En el resultado de
+la consulta, sólo se deben observar las columnas NOMBRECOMPANIA, CIUDAD
+y PAIS. Ordena alfabéticamente el resultado de la consulta, por los nombres de los países.
+SELECT NOMBRECOMPANIA, CIUDAD, PAIS FROM CLIENTES_NEPTUNO
+ORDER BY PAIS;
+
+4. Muestra todos los registros de la tabla CLIENTES_NEPTUNO. En el resultado de la
+consulta sólo se deben observar las columnas NOMBRECOMPANIA, CIUDAD y PAIS. Ordena
+el resultado de la consulta alfabéticamente por los nombres de los países. Para aquellos países que
+se repiten, ordena las ciudades alfabéticamente.
+SELECT NOMBRECOMPANIA, CIUDAD, PAIS FROM CLIENTES_NEPTUNO
+ORDER BY PAIS, CIUDAD;
+
+5. Muestra todos los registros de la tabla CLIENTES_NEPTUNO. En el resultado de la
+consulta sólo se deben observar las columnas NOMBRECOMPANIA, CIUDAD y PAIS.
+Ordena de manera alfabética el resultado de la consulta, por los nombres de los países.
+Muestra únicamente los 10 primeros clientes.
+SELECT NOMBRECOMPANIA, CIUDAD, PAIS FROM CLIENTES_NEPTUNO
+ORDER BY PAIS, CIUDAD LIMIT 10;
+
+6. Muestra todos los registros de la tabla CLIENTES_NEPTUNO. En el resultado de la
+consulta sólo se deben observar las columnas NOMBRECOMPANIA, CIUDAD y PAIS.
+Ordena de manera alfabética el resultado de la consulta, por los nombres de los países.
+Muestra únicamente los clientes ubicados desde la posición 11 hasta la 15.
+SELECT NOMBRECOMPANIA, CIUDAD, PAIS FROM CLIENTES_NEPTUNO
+ORDER BY PAIS, CIUDAD LIMIT 5 OFFSET 10;
+

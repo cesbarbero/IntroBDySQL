@@ -1,0 +1,59 @@
+Resolución de la etapa 2.1
+
+1. Importa el archivo CSV con el nombre CLIENTES_NEPTUNO a la base de datos
+   con el nombre LABORATORIO:
+	a. Pulsa el clic derecho sobre el nombre de
+	   la base de datos LABORATORIO.
+	b. Selecciona Table data import wizard.
+	c. Pulsa el botón Browse.
+	d. Ubica, selecciona y abre el archivo
+	   CLIENTES_NEPTUNO.
+	e. Sigue los pasos del asistente
+	f. Finalizado el asistente, actualiza los
+	   esquemas para verificar la importación de la tabla.
+
+2 - Lleva a cabo los cambios en la tabla CLIENTES_NEPTUNO importada anteriormente
+
+ALTER TABLE CLIENTES_NEPTUNO
+MODIFY IDCLIENTE VARCHAR(5) PRIMARY KEY,
+MODIFY NOMBRECOMPANIA VARCHAR(100) NOT NULL,
+MODIFY PAIS VARCHAR(15) NOT NULL;
+
+
+3 - Cambia el nombre de la tabla CLIENTES por CONTACTOS.
+RENAME TABLE CLIENTES TO CONTACTOS;
+
+4 - Importa el archivo CSV con el nombre CLIENTES a la base de datos LABORATORIO.
+
+5 - Lleva a cabo los siguientes cambios en la tabla CLIENTES importada anteriormente.
+
+ALTER TABLE CLIENTES
+MODIFY COD_CLIENTE VARCHAR(7) PRIMARY KEY,
+MODIFY EMPRESA VARCHAR(100) NOT NULL,
+MODIFY CIUDAD VARCHAR(25) NOT NULL,
+MODIFY TELEFONO INT UNSIGNED,
+MODIFY RESPONSABLE VARCHAR(30);
+
+6. Importa el archivo CSV con el nombre PEDIDOS a la base de datos LABORATORIO.
+
+7. Lleva a cabo los siguientes cambios en la tabla PEDIDOS importada anteriormente.
+ALTER TABLE PEDIDOS
+MODIFY NUMERO_PEDIDO INT UNSIGNED PRIMARY KEY,
+MODIFY CODIGO_CLIENTE VARCHAR(7) NOT NULL,
+MODIFY FECHA_PEDIDO DATE NOT NULL,
+MODIFY FORMA_PAGO ENUM('CONTADO', 'APLAZADO', 'TARJETA'),
+MODIFY ENVIADO ENUM ('SI', 'NO');
+
+8. Importa el archivo CSV con el nombre PRODUCTOS a la base de datos LABORATORIO.
+
+9. Lleva a cabo los cambios en la tabla PRODUCTOS importada en el paso anterior.
+ALTER TABLE PRODUCTOS
+MODIFY COD_PRODUCTO INT UNSIGNED PRIMARY KEY,
+MODIFY SECCION VARCHAR(20) NOT NULL,
+MODIFY NOMBRE VARCHAR(40) NOT NULL,
+MODIFY IMPORTADO ENUM('VERDADERO', 'FALSO') NOT NULL,
+MODIFY ORIGEN VARCHAR(25) NOT NULL,
+MODIFY DIA INT UNSIGNED NOT NULL,
+MODIFY MES INT UNSIGNED NOT NULL,
+MODIFY ANO INT UNSIGNED NOT NULL;
+

@@ -1,0 +1,24 @@
+Resolución de la etapa 2.2
+
+1. Abre el archivo con formato SQL con el nombre NACIMIENTOS desde MySQL Workbench:
+	a. Ejecuta el comando File Open SQL Script.
+	b. Ubica, selecciona y abre el archivo NACIMIENTOS.
+
+2. Ejecuta el código.
+
+3. Actualiza los esquemas.
+
+4. Abre el archivo con formato SQL con el nombre PEDIDOS_NEPTUNO desde MySQL Workbench:
+	a. Ejecuta el comando File Open SQL Script.
+	b. Ubica, selecciona y abre el archivo PEDIDOS_NEPTUNO.
+
+5. Ejecuta el código y actualiza los esquemas.
+
+6. Abre el archivo con formato SQL con el nombre TABLAS_EXTRAS desde MySQL Workbench:
+	a. Ejecuta el comando File Open SQL Script.
+	b. Ubica, selecciona y abre el archivo TABLAS_EXTRAS.
+
+7. Ejecuta el código.
+	8. Actualiza los esquemas.
+	9. Cierra los scripts con los nombres NACIMIENTOS, PEDIDOS NEPTUNO y TABLAS EXTRAS.
+
